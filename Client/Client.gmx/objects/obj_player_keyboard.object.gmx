@@ -25,10 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>self.playerNumber = 1;
-self.playerSpeed = 12;
+            <string>self.playerSpeed = 12;
 
-net_client_send(self.playerNumber, 1, NET_INT, self.y);
+//if (currentPlayer == self.playerNumber) {
+//    net_client_send(self.playerNumber, 1, NET_INT, self.y);
+//}
 </string>
           </argument>
         </arguments>
@@ -53,6 +54,13 @@ net_client_send(self.playerNumber, 1, NET_INT, self.y);
             <kind>1</kind>
             <string>net_client_update();
 self.y = net_client_get(self.playerNumber,1);
+if (self.y == 0) {
+    self.y = room_height/2 - sprite_height/2;
+    self.newY = self.y;
+}
+if (currentPlayer == self.playerNumber) {
+    net_client_send(self.playerNumber, 1, NET_INT, self.newY);
+}
 </string>
           </argument>
         </arguments>
@@ -75,9 +83,13 @@ self.y = net_client_get(self.playerNumber,1);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var newY = self.y + self.playerSpeed;
-newY = min(newY, room_height - sprite_height/2);
-net_client_send(self.playerNumber, 1, NET_INT, newY);
+            <string>if (currentPlayer == self.playerNumber) {
+
+    self.newY = self.y + self.playerSpeed;
+    self.newY = min(newY, room_height - sprite_height/2);
+    //net_client_send(self.playerNumber, 1, NET_INT, self.newY);
+    
+}
 </string>
           </argument>
         </arguments>
@@ -100,9 +112,13 @@ net_client_send(self.playerNumber, 1, NET_INT, newY);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var newY = self.y - self.playerSpeed;
-newY = max(newY, sprite_height/2);
-net_client_send(self.playerNumber, 1, NET_INT, newY);
+            <string>if (currentPlayer == self.playerNumber) {
+
+    self.newY = self.y - self.playerSpeed;
+    self.newY = max(newY, sprite_height/2);
+    //net_client_send(self.playerNumber, 1, NET_INT, self.newY);
+    
+}
 </string>
           </argument>
         </arguments>
