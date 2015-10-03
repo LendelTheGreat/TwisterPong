@@ -26,11 +26,14 @@
     <extension index="0">extensions\EZMultiplayer Custom 1.2</extension>
   </NewExtensions>
   <sounds name="sound"/>
-  <sprites name="sprites"/>
+  <sprites name="sprites">
+    <sprite>sprites\spr_playerleft</sprite>
+  </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
   <objects name="objects">
     <object>objects\obj_client</object>
+    <object>objects\obj_playerleft</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_main</room>
