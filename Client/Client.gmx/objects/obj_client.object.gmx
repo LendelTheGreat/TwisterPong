@@ -81,9 +81,9 @@ ping = 0;
             <kind>1</kind>
             <string>net_client_update();
 
-net_client_send(1,2,NET_INT,obj_playerleft.x,obj_playerleft.y);
+//net_client_send(1,2,NET_INT,obj_playerleft.x,obj_playerleft.y);
 
-net_client_send(2,3,NET_INT,1,2,2);
+//net_client_send(2,3,NET_INT,1,2,2);
 
 time += 1;
 
@@ -150,11 +150,11 @@ show_message(string(i));
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_circle(net_client_get(1,1) + 64,net_client_get(1,2),10,true);
+            <string>//draw_circle(net_client_get(1,1) + 64,net_client_get(1,2),10,true);
 
 //draw_text(10,10,net_client_get(2,1));
 
-draw_text(net_client_get(1,1)+16,net_client_get(1,2)+16,"ping: "+string(ping));
+//draw_text(net_client_get(1,1)+16,net_client_get(1,2)+16,"ping: "+string(ping));
 </string>
           </argument>
         </arguments>

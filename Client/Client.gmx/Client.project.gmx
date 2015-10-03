@@ -34,10 +34,12 @@
   <backgrounds name="background"/>
   <paths name="paths"/>
   <objects name="objects">
-    <object>objects\obj_client</object>
     <object>objects\obj_playerleft</object>
+    <object>objects\obj_client</object>
     <object>objects\obj_ball</object>
     <object>objects\obj_wall</object>
+    <object>objects\obj_player_keyboard</object>
+    <object>objects\obj_player2_keyboard</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_main</room>
