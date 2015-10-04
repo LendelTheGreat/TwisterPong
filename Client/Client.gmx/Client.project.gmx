@@ -28,8 +28,10 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\spr_playerleft</sprite>
+    <sprite>sprites\spr_player_horizontal</sprite>
     <sprite>sprites\spr_ball</sprite>
-    <sprite>sprites\spr_wall</sprite>
+    <sprite>sprites\spr_wall_horizontal</sprite>
+    <sprite>sprites\spr_wall_vertical</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -37,9 +39,16 @@
     <object>objects\obj_playerleft</object>
     <object>objects\obj_client</object>
     <object>objects\obj_ball</object>
-    <object>objects\obj_wall</object>
+    <object>objects\obj_wall_left</object>
+    <object>objects\obj_wall_right</object>
+    <object>objects\obj_wall_top</object>
+    <object>objects\obj_wall_bottom</object>
     <object>objects\obj_player_keyboard</object>
+<<<<<<< HEAD
     <object>objects\obj_twister_control</object>
+=======
+    <object>objects\obj_player_horizontal</object>
+>>>>>>> origin/master
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_main</room>

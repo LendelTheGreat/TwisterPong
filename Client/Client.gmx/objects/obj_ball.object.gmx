@@ -52,7 +52,7 @@
           </argument>
           <argument>
             <kind>0</kind>
-            <string>10</string>
+            <string>8</string>
           </argument>
         </arguments>
       </action>
@@ -76,7 +76,7 @@
           </argument>
           <argument>
             <kind>0</kind>
-            <string>-5</string>
+            <string>8</string>
           </argument>
         </arguments>
       </action>
@@ -107,8 +107,12 @@ if (currentPlayer == 1) {
     if (self.x &lt; 0 || self.x &gt; room_width) {
         self.x = room_width/2;
     }
+    if (self.y &lt; 0 || self.y &gt; room_height) {
+        self.y = room_height/2;
+    }
     
-    net_client_send(10, 2, NET_INT, self.x + self.speedV, self.y + self.speedH);
+    
+    net_client_send(10, 2, NET_INT, self.x + self.speedH, self.y + self.speedV);
 }
 </string>
           </argument>
@@ -134,40 +138,10 @@ if (currentPlayer == 1) {
             <kind>1</kind>
             <string>if (currentPlayer == 1) {
     if (self.x &lt; room_width/2) {
-        self.speedV = abs(self.speedV);
-    }
-    else {
-        self.speedV = -abs(self.speedV);
-    }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_wall">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if (currentPlayer == 1) {
-    if (self.y &gt; (room_height/2)) {
-        self.speedH = -1 * abs(self.speedH);
-    }
-    else {
         self.speedH = abs(self.speedH);
+    }
+    else {
+        self.speedH = -abs(self.speedH);
     }
 }
 </string>
