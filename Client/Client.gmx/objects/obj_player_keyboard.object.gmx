@@ -26,6 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>self.playerSpeed = 12;
+self.lastTimeHere = 0;
+self.score = 0;
 
 //if (currentPlayer == self.playerNumber) {
 //    net_client_send(self.playerNumber, 1, NET_INT, self.y);
@@ -52,15 +54,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>net_client_update();
-
-if (self.y == 0) {
+            <string>if (self.y == 0) {
     self.y = room_height/2 - sprite_height/2;
     self.newY = self.y;
 }
 if (currentPlayer == self.playerNumber) {
     net_client_send(self.playerNumber, 1, NET_INT, self.newY);
     self.y = self.newY;
+}
+if (net_client_check(self.playerNumber)) {
+    self.lastTimeHere = 0;
 }
 else {
     self.y = net_client_get(self.playerNumber,1);

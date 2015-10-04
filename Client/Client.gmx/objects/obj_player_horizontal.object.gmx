@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>self.playerSpeed = 12;
+self.lastTimeHere = 0;
 
 //if (currentPlayer == self.playerNumber) {
 //    net_client_send(self.playerNumber, 1, NET_INT, self.y);
@@ -61,6 +62,9 @@ if (self.x == 0) {
 if (currentPlayer == self.playerNumber) {
     net_client_send(self.playerNumber, 1, NET_INT, self.newX);
     self.x = self.newX;
+}
+if (net_client_check(self.playerNumber)) {
+    self.lastTimeHere = 0;
 }
 else {
     self.x = net_client_get(self.playerNumber,1);

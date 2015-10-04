@@ -149,18 +149,20 @@ if (self.gameStarted) {
     
     var i;
     for (i = 1; i &lt; 5; i += 1) {   
-        if (net_client_get(i, 1) != 0) 
+        if (net_client_check(i)) {
+            players[i-1].lastTimeHere = 0;
+        }
+        if (net_client_get(i, 1) != 0 &amp;&amp; players[i-1].lastTimeHere &lt; 3 * room_speed) 
         {
+            players[i-1].lastTimeHere += 1;
             players[i-1].visible = true;
             
             // move the wall away from the room.
-            walls[i-1].x = room_width + 100;
-            walls[i-1].y = room_height + 100;
+            walls[i-1].visible = false;
         }
         else {
             players[i-1].visible = false;
-            //walls[i-1].x = walls[i-1].trueX;
-            //walls[i-1].x = walls[i-1].trueY;
+            walls[i-1].visible = true;
         }
     }
 }
