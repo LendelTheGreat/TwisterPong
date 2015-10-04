@@ -325,10 +325,14 @@ if (currentPlayer == 1 &amp;&amp; other.visible) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (currentPlayer == 1 &amp;&amp; other.visible) {
+            <string>if other.visible {
     if cool_down {
         hit_count += 1;
     }
+}
+
+
+if (currentPlayer == 1 &amp;&amp; other.visible) {
     
     max_speed = 8;
     
