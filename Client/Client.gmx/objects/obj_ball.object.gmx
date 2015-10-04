@@ -243,6 +243,26 @@ for (j = 0; j &lt; 1; j += 1) {
           <argument>
             <kind>1</kind>
             <string>if (currentPlayer == 1 &amp;&amp; other.visible) {
+    if cool_down {
+        hit_count += 1;
+    }
+    
+    max_speed = 8;
+    
+    if (self.y &lt; room_height/2) {
+        yDifference = other.x - self.x + 64;
+        self.speedH = max_speed * 0.75 * yDifference/64 * (-1);
+        self.speedV = max_speed * ((1 - abs(yDifference/64) * 0.75) + 0.25);
+    }
+    else {
+        yDifference = other.x - self.x + 64;
+        self.speedH = max_speed * 0.75 * yDifference/64  * (-1);
+        self.speedV = (-1) * max_speed * ((1 - abs(yDifference/64) * 0.75) + 0.25);
+    }
+    
+}
+
+if (currentPlayer == 1 &amp;&amp; other.visible) {
     if (self.y &lt; room_height/2) {
         self.speedV = abs(self.speedV);
     }
