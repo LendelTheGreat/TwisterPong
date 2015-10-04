@@ -46,6 +46,7 @@
     <object>objects\obj_player_keyboard</object>
     <object>objects\obj_player_horizontal</object>
     <object>objects\obj_twister_control</object>
+    <object>objects\obj_wall_parent</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_main</room>

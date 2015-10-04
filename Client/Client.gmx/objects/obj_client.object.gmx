@@ -152,11 +152,15 @@ if (self.gameStarted) {
         if (net_client_get(i, 1) != 0) 
         {
             players[i-1].visible = true;
-            walls[i-1].visible = false;
+            
+            // move the wall away from the room.
+            walls[i-1].x = room_width + 100;
+            walls[i-1].y = room_height + 100;
         }
         else {
             players[i-1].visible = false;
-            walls[i-1].visible = true;
+            //walls[i-1].x = walls[i-1].trueX;
+            //walls[i-1].x = walls[i-1].trueY;
         }
     }
 }
