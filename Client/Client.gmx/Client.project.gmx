@@ -33,6 +33,7 @@
     <sprite>sprites\spr_wall_horizontal</sprite>
     <sprite>sprites\spr_wall_vertical</sprite>
     <sprite>sprites\spr_keyboard</sprite>
+    <sprite>sprites\spr_key_colours</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -47,6 +48,7 @@
     <object>objects\obj_player_keyboard</object>
     <object>objects\obj_player_horizontal</object>
     <object>objects\obj_key_display</object>
+    <object>objects\obj_key_colours</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_main</room>
