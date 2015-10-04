@@ -200,14 +200,14 @@ if cool_down {
 
 if new_hit {
     show_message("New Hit");
-    new_key = random_range(65,90);
+    new_key = irandom(25);
  //   key[prev_hit_count % 5] = new_key;
-    key[0] = new_key;
-    obj_key_display.image_index = (new_key - 64);
+    key[0] = new_key + 65;
+    obj_key_display.image_index = new_key + 1;
     prev_hit_count += 1;
     
     cool_down = false;
-    alarm[0] = 60;
+    alarm[0] = 2*room_speed;
 }
 
 
@@ -275,7 +275,9 @@ for (j = 0; j &lt; 1; j += 1) {
           <argument>
             <kind>1</kind>
             <string>if (currentPlayer == 1 &amp;&amp; other.visible) {
-    hit_count += 1;
+    if cool_down {
+        hit_count += 1;
+    }
     
     max_speed = 8;
     
