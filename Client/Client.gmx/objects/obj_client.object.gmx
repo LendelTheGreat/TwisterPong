@@ -148,7 +148,7 @@ if (self.gameStarted) {
     walls[3] = instance_find(obj_wall_bottom, 0);
     
     var i;
-    for (i = 1; i &lt; 4; i += 1) {   
+    for (i = 1; i &lt; 5; i += 1) {   
         if (net_client_get(i, 1) != 0) 
         {
             players[i-1].visible = true;
