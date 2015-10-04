@@ -11,29 +11,6 @@
     <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if (currentPlayer == 1) {
-    net_client_send(10, 2, NET_INT, self.x, self.y);
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
         <id>611</id>
         <kind>6</kind>
         <userelative>-1</userelative>
@@ -108,6 +85,54 @@ for(i = 0; i &lt; 5; i += 1) {
 can_move = true;
 hit_count = 0;
 prev_hit_count = 0;
+
+cool_down = true;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (currentPlayer == 1) {
+    net_client_send(10, 2, NET_INT, self.x, self.y);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>cool_down = true;
 </string>
           </argument>
         </arguments>
@@ -166,18 +191,29 @@ if (currentPlayer == 1) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>new_hit = hit_count &gt; prev_hit_count
+            <string>//Won't perform action unless there is a new hit
+if cool_down {
+    new_hit = hit_count &gt; prev_hit_count
+} else {
+    new_hit = false
+}
 
 if new_hit {
     show_message("New Hit");
-    key[prev_hit_count % 5] = 65;
+    new_key = random_range(65,90);
+ //   key[prev_hit_count % 5] = new_key;
+    key[0] = new_key;
+    obj_key_display.image_index = (new_key - 64);
     prev_hit_count += 1;
+    
+    cool_down = false;
+    alarm[0] = 60;
 }
 
 
 //if all valid keys are pressed, player can move
 var j;
-for (j = 0; j &lt; 5; j += 1) {
+for (j = 0; j &lt; 1; j += 1) {
     if key[j] != 0 {
         can_move = keyboard_check(key[j]);
     }

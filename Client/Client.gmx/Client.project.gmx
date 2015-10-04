@@ -32,6 +32,7 @@
     <sprite>sprites\spr_ball</sprite>
     <sprite>sprites\spr_wall_horizontal</sprite>
     <sprite>sprites\spr_wall_vertical</sprite>
+    <sprite>sprites\spr_keyboard</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -45,7 +46,7 @@
     <object>objects\obj_wall_bottom</object>
     <object>objects\obj_player_keyboard</object>
     <object>objects\obj_player_horizontal</object>
-    <object>objects\obj_twister_control</object>
+    <object>objects\obj_key_display</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_main</room>
