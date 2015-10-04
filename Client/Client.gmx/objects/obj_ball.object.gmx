@@ -207,8 +207,13 @@ self.x = net_client_get(10,1);
 self.y = net_client_get(10,2);
 
 if (currentPlayer == 1) {
-    if (self.x &lt; 0 || self.x &gt; room_width) {
+    if (self.x &lt; 0) {
         self.x = room_width/2;
+        p2s += 2;
+    }
+    if(self.x &gt; room_width) {
+        self.x = room_width/2;
+        p1s += 2;   
     }
     if (self.y &lt; 0 || self.y &gt; room_height) {
         self.y = room_height/2;
@@ -370,7 +375,16 @@ if (currentPlayer == 1 &amp;&amp; other.visible) {
 
 
 if (currentPlayer == 1 &amp;&amp; other.visible) {
-    
+    if cool_down { 
+        if (other.playerNumber == 1) {
+            p1s += 1;
+        }
+        
+        if (other.playerNumber == 2) {
+            p2s += 1;
+        }
+    }
+        
     max_speed = 8;
     
     if (self.x &lt; room_width/2) {

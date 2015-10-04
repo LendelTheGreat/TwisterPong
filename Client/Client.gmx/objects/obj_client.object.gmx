@@ -39,6 +39,15 @@ p2 = 0;
 p3 = 0;
 p4 = 0;
 
+globalvar p1s;
+p1s = 0;
+globalvar p2s;
+p2s = 0;
+globalvar p2s;
+p3s = 0;
+globalvar p4s;
+p4s = 0;
+
 self.gameStarted = false;
 
 connected = net_client_connect("localhost",7676);
@@ -165,6 +174,11 @@ if (self.gameStarted) {
             walls[i-1].visible = true;
         }
     }
+    
+    if (currentPlayer == 1) {
+        net_client_send(20,1,NET_INT,p1s);
+        net_client_send(21,1,NET_INT,p2s);
+    }
 }
 </string>
           </argument>
@@ -231,9 +245,8 @@ show_message(string(i));
 //draw_text(net_client_get(1,1)+16,net_client_get(1,2)+16,"ping: "+string(ping));
 
 
-draw_text(10,10,net_client_get(1,1));
-draw_text(110,10,net_client_get(2,1));
-draw_text(210,10,net_client_get(3,1));
+draw_text(2,room_height/2,net_client_get(20,1));
+draw_text(room_width - 30,room_height/2,net_client_get(21,1));
 </string>
           </argument>
         </arguments>
