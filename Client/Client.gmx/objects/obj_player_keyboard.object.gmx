@@ -91,7 +91,7 @@ else {
 
 
     self.newY = self.y + self.playerSpeed;
-    self.newY = min(newY, room_height - sprite_height/2);
+    self.newY = min(newY, room_height - sprite_height);
     //net_client_send(self.playerNumber, 1, NET_INT, self.newY);
 
     
@@ -122,7 +122,7 @@ else {
 
 if obj_ball.can_move {
     self.newY = self.y - self.playerSpeed;
-    self.newY = max(newY, sprite_height/2);
+    self.newY = max(newY, 1);
     //net_client_send(self.playerNumber, 1, NET_INT, self.newY);
 }
 

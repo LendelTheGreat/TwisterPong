@@ -117,7 +117,7 @@ else {
             <string>if (currentPlayer == self.playerNumber) {
 
     self.newX = self.x - self.playerSpeed;
-    self.newX = max(newX, sprite_width/2);
+    self.newX = max(newX, 1);
 }
 </string>
           </argument>
