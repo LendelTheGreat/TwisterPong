@@ -80,6 +80,38 @@
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>randomize();
+
+
+//Fill keys as empty
+var i;
+for(i = 0; i &lt; 5; i += 1) {
+    key[i] = 0;
+}
+
+can_move = true;
+hit_count = 0;
+prev_hit_count = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="3" enumb="0">
       <action>
@@ -118,6 +150,44 @@ if (currentPlayer == 1) {
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>new_hit = hit_count &gt; prev_hit_count
+
+if new_hit {
+    show_message("New Hit");
+    key[prev_hit_count % 5] = 65;
+    prev_hit_count += 1;
+}
+
+
+//if all valid keys are pressed, player can move
+var j;
+for (j = 0; j &lt; 5; j += 1) {
+    if key[j] != 0 {
+        can_move = keyboard_check(key[j]);
+    }
+}
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="4" ename="obj_player_horizontal">
       <action>
@@ -143,6 +213,8 @@ if (currentPlayer == 1) {
     else {
         self.speedV = (-1) * abs(self.speedV);
     }
+    
+    hit_count += 1;
 }
 </string>
           </argument>
@@ -173,6 +245,7 @@ if (currentPlayer == 1) {
     else {
         self.speedH = -abs(self.speedH);
     }
+    hit_count += 1;
 }
 </string>
           </argument>

@@ -120,10 +120,11 @@ else {
             <kind>1</kind>
             <string>if (currentPlayer == self.playerNumber) {
 
-
+if obj_ball.can_move {
     self.newY = self.y - self.playerSpeed;
     self.newY = max(newY, sprite_height/2);
     //net_client_send(self.playerNumber, 1, NET_INT, self.newY);
+}
 
     
 }
