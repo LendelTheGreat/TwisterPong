@@ -53,13 +53,17 @@
           <argument>
             <kind>1</kind>
             <string>net_client_update();
-self.y = net_client_get(self.playerNumber,1);
+
 if (self.y == 0) {
     self.y = room_height/2 - sprite_height/2;
     self.newY = self.y;
 }
 if (currentPlayer == self.playerNumber) {
     net_client_send(self.playerNumber, 1, NET_INT, self.newY);
+    self.y = self.newY;
+}
+else {
+    self.y = net_client_get(self.playerNumber,1);
 }
 </string>
           </argument>

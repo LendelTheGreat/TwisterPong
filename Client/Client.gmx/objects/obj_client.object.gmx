@@ -31,7 +31,7 @@
 globalvar currentPlayer;
 currentPlayer = 0;
 
-connected = net_client_connect("localhost",7676);
+connected = net_client_connect("192.168.173.14",7676);
 
 if (connected == true)
 {
@@ -76,10 +76,10 @@ for (i = 1; i &lt; 5; i += 1) {
         show_message(string(i));
         currentPlayer = i;
              
-        p1 = instance_create(32, room_height/2, obj_player_keyboard);
+        p1 = instance_create(32, 0, obj_player_keyboard);
         p1.playerNumber = 1;
         
-        p2 = instance_create(room_width - 32 - sprite_width, room_height/2, obj_player_keyboard);
+        p2 = instance_create(room_width - 32 - sprite_width, 0, obj_player_keyboard);
         p2.playerNumber = 2;
     
         break;
