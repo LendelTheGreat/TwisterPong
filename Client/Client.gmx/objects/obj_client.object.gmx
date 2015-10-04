@@ -30,8 +30,19 @@
 // Global variable - which player is being controller.
 globalvar currentPlayer;
 currentPlayer = 0;
+globalvar p1;
+globalvar p2;
+globalvar p3;
+globalvar p4;
+p1 = 0;
+p2 = 0;
+p3 = 0;
+p4 = 0;
 
-connected = net_client_connect("192.168.173.14",7676);
+self.gameStarted = false;
+
+connected = net_client_connect("localhost",7676);
+//connected = net_client_connect("192.168.173.14",7676);
 
 if (connected == true)
 {
@@ -91,6 +102,8 @@ for (i = 1; i &lt; 5; i += 1) {
         break;
     } 
 }
+
+self.gameStarted = true;
 </string>
           </argument>
         </arguments>
@@ -121,6 +134,31 @@ if (net_client_check(1) == true)
 {
     ping = (time)*(1000/room_speed);
     time = 0;
+}
+
+if (self.gameStarted) {
+    players[0] = (p1);
+    players[1] = (p2);
+    players[2] = (p3);
+    players[3] = (p4);
+    
+    walls[0] = instance_find(obj_wall_left, 0);
+    walls[1] = instance_find(obj_wall_right, 0);
+    walls[2] = instance_find(obj_wall_top, 0);
+    walls[3] = instance_find(obj_wall_bottom, 0);
+    
+    var i;
+    for (i = 1; i &lt; 4; i += 1) {   
+        if (net_client_get(i, 1) != 0) 
+        {
+            players[i-1].visible = true;
+            walls[i-1].visible = false;
+        }
+        else {
+            players[i-1].visible = false;
+            walls[i-1].visible = true;
+        }
+    }
 }
 </string>
           </argument>
