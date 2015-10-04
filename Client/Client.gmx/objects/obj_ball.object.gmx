@@ -79,10 +79,10 @@
 //Fill keys as empty
 //create twister objects
 var i;
-for(i = 0; i &lt; 5; i += 1) {
+for(i = 0; i &lt; 4; i += 1) {
     key[i] = 0;
-    key_display[i] = instance_create(((room_width/2 - 160) + i*64), room_height/2 - 32, obj_key_display);
-    key_colours[i] = instance_create(((room_width/2 - 160) + i*64), room_height/2 - 32, obj_key_colours);
+    key_display[i] = instance_create(((room_width/2 - 128) + i*64), room_height/2 - 32, obj_key_display);
+    key_colours[i] = instance_create(((room_width/2 - 128) + i*64), room_height/2 - 32, obj_key_colours);
     
     key_display[i].depth = 500;
     
@@ -224,10 +224,10 @@ if new_hit {
     
 
     //New key added
-    key[prev_hit_count % 5] = new_key + 65;
+    key[prev_hit_count % 4] = new_key + 65;
     //key object changed
-    key_display[prev_hit_count % 5].image_index = new_key + 1;
-    key_colours[prev_hit_count % 5].image_index = irandom(3);
+    key_display[prev_hit_count % 4].image_index = new_key + 1;
+    key_colours[prev_hit_count % 4].image_index = irandom(3);
     
     
     prev_hit_count += 1;
@@ -240,7 +240,7 @@ if new_hit {
 
 //if all valid keys are pressed, player can move
 var j;
-for (j = 0; j &lt; 5; j += 1) {
+for (j = 0; j &lt; 4; j += 1) {
     if key[j] != 0 {
         can_move = keyboard_check(key[j]);
         
