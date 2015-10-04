@@ -136,20 +136,13 @@ if (currentPlayer == 1) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (currentPlayer == 1) {
-    if (self.x &lt; room_width/2) {
-        self.speedH = abs(self.speedH);
-    }
-    else {
-        self.speedH = -abs(self.speedH);
-    }
+            <string>if (other.playerNumber = currentPlayer) {
+    other.ball_hit_count += 1;
 }
 </string>
           </argument>
         </arguments>
       </action>
-    </event>
-    <event eventtype="4" ename="obj_player_parent">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -166,8 +159,13 @@ if (currentPlayer == 1) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (other.playerNumber = currentPlayer) {
-    other.ball_hit_count += 1;
+            <string>if (currentPlayer == 1) {
+    if (self.x &lt; room_width/2) {
+        self.speedH = abs(self.speedH);
+    }
+    else {
+        self.speedH = -abs(self.speedH);
+    }
 }
 </string>
           </argument>

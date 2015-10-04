@@ -34,7 +34,8 @@ for(i = 0; i &lt; 5; i += 1) {
     key[i] = 0;
 }
 
-
+can_move = 1;
+prev_hit_count = 0;
 </string>
           </argument>
         </arguments>
@@ -60,9 +61,32 @@ for(i = 0; i &lt; 5; i += 1) {
             <string>//if current hit count is larger than previous
 //A new random key is added
 
-var j;
+
+
+switch(currentPlayer) {
+    case 1: 
+        new_hit = (p1).ball_hit_count &gt; prev_hit_count;
+    case 2: 
+        new_hit = (p2).ball_hit_count &gt; prev_hit_count;
+    case 3: 
+        new_hit = (p3).ball_hit_count &gt; prev_hit_count;
+    case 4: 
+        new_hit = (p4).ball_hit_count &gt; prev_hit_count;
+}
+
+if new_hit {
+    key[prev_hit_count % 5] = 65;
+    prev_hit_count += 1;
+}
+
 
 //if all valid keys are pressed, player can move
+var j;
+for (j = 0; j &lt; 5; j += 1) {
+    if key[j] != 0 {
+        can_move = keyboard_check(key[j]);
+    }
+}
 </string>
           </argument>
         </arguments>
